@@ -7,6 +7,19 @@
     <title>Document</title>
 </head>
 <body>
+    <header>
+        <ul id = "menu">
+            <li><a href = "page1">page1</a></li>
+            <li><a href = "page2">page2</a></li>
+            <li><a href = "page3">page3</a></li>
+        </ul>
+    </header>
+    <main>
+        
+    </main>
+    <footer>
+
+    </footer>
     
 </body>
 </html>
