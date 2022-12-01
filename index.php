@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -49,7 +49,33 @@
 
     </main>
     <footer>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquam tempore saepe, aspernatur nihil cupiditate doloremque. Inventore earum incidunt, aperiam quo, doloremque, eligendi beatae ab maxime adipisci architecto atque fugiat dolorem?</p>
+        <div id="membres" class="divfooter">
+        <h2>Les membres de l'équipe :</h1>
+            <ul>
+                <li><a href="blablabla" target="_blank">Nicolas Rousseau</a></li>
+                <li><a href="blablabla" target="_blank">Quentin Couturier</a></li>
+                <li><a href="blablabla" target="_blank">Mendy Paul</a></li>
+                <li><a href="blablabla" target="_blank">Arthur Weidner</a></li>
+                <li><a href="blablabla" target="_blank">Noa Despaux</a></li>
+                <li><a href="blablabla" target="_blank">Jehan Philipon</a></li>
+                <li><a href="blablabla" target="_blank">Téo Asseline</a></li>
+            </ul>
+            <ul>
+                <li><a href="blablabla" target="_blank">Elena Chelle</a></li>
+                <li><a href="blablabla" target="_blank">Chloe Sechi</a></li>
+                <li><a href="blablabla" target="_blank">Gaïa Ducournau</a></li>
+                <li><a href="https://www.linkedin.com/in/cl%C3%A9ment-faux-8a6609252/" target="_blank">Clément Faux</a></li>
+                <li><a href="https://baychebaptiste.com/fr/index.html" target="_blank">Baptiste Bayche</a></li>
+                <li><a href="https://www.titouanpastor.com/" target="_blank">Titouan Pastor</a></li>
+            </ul>
+        </div>
+        <div id="logos" class="divfooter">
+            <ul>
+                <li><a href="https://www.nuitdelinfo.com/" target="_blank"><img src="img/logoNDL.svg" alt="logo nuit de l'info"/></a></li>
+                <li><a href="https://iut.univ-tlse3.fr/informatique" target="_blank"><img src="img/logoIUT.png" alt="logo iut informatique paul sabatier"/></a></li>
+                <li><li><a href="https://www.univ-tlse3.fr/" target="_blank"><img src="img/logo_UT3.png" alt="logo de l'université paul sabatier"/></a></li>
+            </ul>
+        </div>
     </footer>
 
 </body>
