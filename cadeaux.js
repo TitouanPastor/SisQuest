@@ -22,54 +22,55 @@ function sessionCadeaux(idDuCadeau) {
 		tabCheck = localStorage.getItem("cadeaux");
 		check = 0;
 
-		while (tabCheck[i] == true){
+		while (tabCheck[i] == true) {
 			check++;
 		}
-		if(check == 9){
-			// implémenter
+		if (check == 9) {
+			// implémenter l'action a faire quand le joueur a 10 cadeaux
 		}
 
-    	switch (idDuCadeau){
-    	case "cadeau1":
-    		tab[0] = true;
-    		localStorage.setItem("cadeaux", tabCadeaux);
-    		break;
-    	case "cadeau2":
-    		tab[1] = true;
-    		localStorage.setItem("cadeaux", tabCadeaux);
-    		break;
-    	case "cadeau3":
-    		tab[2] = true;
-    		localStorage.setItem("cadeaux", tabCadeaux);
-    		break;
-    	case "cadeau4":
-    		tab[3] = true;
-    		localStorage.setItem("cadeaux", tabCadeaux);
-    		break;
-    	case "cadeau5":
-    		tab[4] = true;
-    		localStorage.setItem("cadeaux", tabCadeaux);
-    		break;
-    	case "cadeau6":
-    		tab[5] = true;
-    		localStorage.setItem("cadeaux", tabCadeaux);
-    		break;
-    	case "cadeau7":
-    		tab[6] = true;
-    		localStorage.setItem("cadeaux", tabCadeaux);
-    		break;
-    	case "cadeau8":
-    		tab[7] = true;
-    		localStorage.setItem("cadeaux", tabCadeaux);
-    		break;
-    	case "cadeau9":
-    		tab[8] = true;
-    		localStorage.setItem("cadeaux", tabCadeaux);
-    		break;
-    	case "cadeau10":
-    		tab[9] = true;
-    		localStorage.setItem("cadeaux", tabCadeaux);
-    		break;
-    	}
+		switch (idDuCadeau) {
+			case "cadeau1":
+				tab[0] = true;
+				localStorage.setItem("cadeaux", tabCadeaux);
+				break;
+			case "cadeau2":
+				tab[1] = true;
+				localStorage.setItem("cadeaux", tabCadeaux);
+				break;
+			case "cadeau3":
+				tab[2] = true;
+				localStorage.setItem("cadeaux", tabCadeaux);
+				break;
+			case "cadeau4":
+				tab[3] = true;
+				localStorage.setItem("cadeaux", tabCadeaux);
+				break;
+			case "cadeau5":
+				tab[4] = true;
+				localStorage.setItem("cadeaux", tabCadeaux);
+				break;
+			case "cadeau6":
+				tab[5] = true;
+				localStorage.setItem("cadeaux", tabCadeaux);
+				break;
+			case "cadeau7":
+				tab[6] = true;
+				localStorage.setItem("cadeaux", tabCadeaux);
+				break;
+			case "cadeau8":
+				tab[7] = true;
+				localStorage.setItem("cadeaux", tabCadeaux);
+				break;
+			case "cadeau9":
+				tab[8] = true;
+				localStorage.setItem("cadeaux", tabCadeaux);
+				break;
+			case "cadeau10":
+				tab[9] = true;
+				localStorage.setItem("cadeaux", tabCadeaux);
+				break;
+		}
 
+	}
 }
