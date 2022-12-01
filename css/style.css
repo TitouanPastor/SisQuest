@@ -4,10 +4,26 @@
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
 }
+main {
+    background-color: grey;
+}
 
 header {
     display: block;
+    position: fixed;
     width: 100vw;
-    height: 3vh;
+    height: 10vh;
+    padding: 1vw;
     background-color: black;
+}
+#menu {
+    display: flex;
+    justify-content: space-between;
+}
+#menu > li {
+    display: inline-block;
+    padding-right: 10vw;
+}
+#menu > li> img {
+    max-height: 6vh;
 }

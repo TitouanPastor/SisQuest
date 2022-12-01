@@ -10,10 +10,10 @@
 <body>
     <header>
         <ul id="menu">
-            <li><img/></li>
+            <li><img src="imG/imageTest.jpg"></li>
             <li><a href ="">page1</a></li>
             <li><a href ="">page2</a></li>
-            <li><a href =""></a></li>
+            <li><a href ="">page3</a></li>
         </ul>
     </header>
     <main>
@@ -22,12 +22,16 @@
         </div>
         <div id = "information">
             <div id="info1">
+            <img src="imG/imageTest.jpg">
+                
 
             </div>
             <div id="info2">
+            <img src="imG/imageTest.jpg">
 
             </div>
             <div id="info3">
+            <img src="imG/imageTest.jpg">
 
             </div>
         
