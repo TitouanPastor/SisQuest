@@ -5,3 +5,9 @@
     font-family: 'Montserrat', sans-serif;
 }
 
+header {
+    display: block;
+    width: 100vw;
+    height: 3vh;
+    background-color: black;
+}

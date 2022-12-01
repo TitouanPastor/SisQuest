@@ -8,11 +8,34 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <header>
+        <ul id="menu">
+            <li><img/></li>
+            <li><a href ="">page1</a></li>
+            <li><a href ="">page2</a></li>
+            <li><a href =""></a></li>
+        </ul>
+    </header>
     <main>
+        <div id = "jeu">
+
+        </div>
+        <div id = "information">
+            <div id="info1">
+
+            </div>
+            <div id="info2">
+
+            </div>
+            <div id="info3">
+
+            </div>
         
+        </div>
+
     </main>
     <footer>
-
+        <p></p>
     </footer>
     
 </body>
