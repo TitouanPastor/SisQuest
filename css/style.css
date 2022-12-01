@@ -4,6 +4,11 @@
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
 }
+
+/*////////////////////////////////*/
+/*//      Header : Menu         //*/
+/*////////////////////////////////*/
+
 main {
     background-color: grey;
 }
@@ -26,4 +31,19 @@ header {
 }
 #menu > li> img {
     max-height: 6vh;
+}
+
+/*////////////////////////////////*/
+/*//           DIV JEU          //*/
+/*////////////////////////////////*/
+
+main{
+    padding-top: 10vh;
+    width: 100vw;
+    margin: 0;
+    
+}
+#jeu{
+    height: 90vh;
+    background-color: blue;
 }

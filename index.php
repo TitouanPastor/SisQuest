@@ -18,7 +18,7 @@
     </header>
     <main>
         <div id = "jeu">
-
+            <p>test</p>
         </div>
         <div id = "information">
             <div id="info1">
