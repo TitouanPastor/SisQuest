@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TUEZ LE SIDA !!</title>
+    <link rel="stylesheet" href="../css/clicker.css">
+</head>
+
+<body>
+    <main>
+        <section class="sida_container">
+            <div class="barpv_container">
+                <span class="pourcentpv">100%</span>
+                <div class="border_barpv"><div class="barpv"></div></div>
+            </div>
+            <span class="result"></span>
+            <a href="../index.php" class="link-retour"></a>
+        </section>
+    </main>
+</body>
+<script>
+    // Initialisation des variables
+    var maxpv = 150;
+    var pv = maxpv;
+
+    var barpv_container = document.querySelector('.barpv_container');
+    var barpv = document.querySelector('.barpv');
+    barpv.style.width = maxpv + 'px';
+    var pourcentpv = document.querySelector('.pourcentpv');
+    var result = document.querySelector('.result');
+    var link_retour = document.querySelector('.link-retour');
+
+    window.onclick = function () {
+        if (pv > 0) {
+            pv -= 10;
+            barpv.style.width = pv + "px";
+            pourcentpv.innerHTML = Math.round(pv/maxpv * 100) + "%";
+        }
+        if (pv <= 1) {
+            result.innerHTML = "Le sida est mort ! bien joué !";
+            link_retour.innerHTML = "Retour à l'accueil";
+            link_retour.style.display = "block";
+        }
+    }
+    document.body.appendChild(clicker);
+</script>
+
+</html>
