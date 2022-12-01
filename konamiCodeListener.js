@@ -83,4 +83,4 @@ document.addEventListener('keypress', (event) => {
             //KONAMI CODE FAIT !!!!!
             // A IMPLEMENTER
     }
-}
+});
