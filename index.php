@@ -13,9 +13,7 @@
     <?php
     //session_destroy();
         require_once("badges.php");
-        if (!session_status() === PHP_SESSION_ACTIVE){
-            session_start();
-        }
+        
         if (!isset($_SESSION['badges'])){
                 $_SESSION['badges'] = new Badge();
         }
@@ -41,28 +39,31 @@
         <?php
             require_once('scenario.php');
             require_once('pointsJeu.php');
+        
             if(session_status() == PHP_SESSION_ACTIVE){
                 unset($_SESSION['scenario']);
                 unset($_SESSION['points']);
             }
-        
-
 
             //session_destroy();    
-        
-                
+            session_start();
+            
             if (!isset($_SESSION['scenario']) || isset($_POST['replay'])){
 
                 echo '<h1>Répondez aux questions correctement pour gagner des points !</h1>';
                 require_once('scenario.php');
+               
+                require_once('pointsJeu.php');
                 $_SESSION['scenario'] = new Scenario();
                 $_SESSION['points'] = new Points();
                 $_SESSION['scenario']->randomScenario();
                 $_SESSION['scenario']->printScenario();
                 echo '<input type="submit" name="valider" value="Valider le choix">';
             }else{
+                
                 if (isset($_POST['valider'])) {
                     echo '<form id="form" action="index.php" method="POST">';
+                    echo $_POST['choix'];
                     if ($_SESSION['points']->reponseCorrect($_POST['choix'])) {
                         echo "Bonne réponse !";
                         $_SESSION['points']->addPoints(1);
