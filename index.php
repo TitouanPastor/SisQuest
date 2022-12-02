@@ -10,9 +10,12 @@
 </head>
 
 <body>
+    <video width="500px" height="500px" playsinline controls>
+        <source src="img/fantinvideo.webm" type="video/webm">
+    </video>
     <header>
         <ul id="menu">
-            <li><a href="#"><img src="imG/imageTest.jpg"></a></li>
+            <li><a onclick="fantin()" href="#"><img src="imG/imageTest.jpg"></a></li>
             <li><a href="#info1">info1</a></li>
             <li><a href="#info2">info2</a></li>
             <li><a href="#info3">info3</a></li>
@@ -42,15 +45,15 @@
 
             <h1>Jeu</h1>
             <?php
-            if (!isset($_COOKIE['pseudo'])){
+            if (!isset($_COOKIE['pseudo'])) {
                 echo '<p>Avant de jouer rentrez votre pseudo :</p>
                 <form action="index.php" method="POST">';
                 echo '<input type="text" name="pseudo" id="pseudo" placeholder="Votre pseudo">';
                 echo '<input type="submit" name="validerPseudo" value="Valider">';
                 echo '</form>';
-                if (isset($_POST['validerPseudo'])){
+                if (isset($_POST['validerPseudo'])) {
                     $pseudo = $_POST['pseudo'];
-                    setcookie('pseudo', $pseudo, time() + 365*24, null, null, false, true);
+                    setcookie('pseudo', $pseudo, time() + 365 * 24, null, null, false, true);
                 }
             
             }
@@ -69,7 +72,7 @@
                     echo '<input type="submit" name="valider" value="Valider le choix">';
                 } else {
                     if (isset($_POST['valider'])) {
-                        
+
                         if ($_SESSION['points']->reponseCorrect($_POST['choix'])) {
                             echo "Bonne réponse !";
                             $_SESSION['points']->addPoints(1);
@@ -84,8 +87,6 @@
                         echo $_SESSION['points']->AfficherPoints();
                         if ($_SESSION['scenario']->endgame()) {
                             echo '<input type="submit" name="end" value="Terminer!">';
-
-                            
                         } else {
                             echo '<input type="submit" name="next" value="Prochaine question">';
                             if (isset($_POST['next'])) {
@@ -96,16 +97,13 @@
                             }
                         }
                     }
-
-                    
                 }
-                if (isset($_POST['deco'])){
-                    
-                    setcookie('pseudo', '', time()-3600*24, '/', '', false, false);
-                
+                if (isset($_POST['deco'])) {
+
+                    setcookie('pseudo', '', time() - 3600 * 24, '/', '', false, false);
                 }
 
-                if (isset($_POST['next'])) {    
+                if (isset($_POST['next'])) {
                     $_SESSION['scenario']->nextScenario();
                     $_SESSION['scenario']->printScenario();
                     echo '<input type="submit" name="valider" value="Valider le choix">';
@@ -265,12 +263,7 @@
                     //KONAMI CODE FAIT !!!!!
                     // A IMPLEMENTER
                     document.querySelector('.infokonami').innerHTML = "KONAMI CODE FAIT !!!!!";
-                    var firstLink = document.getElementsByTagName('link')[0];
-                    firstLink.parentNode.removeChild(firstLink)
-                    var link = document.createElement('link');
-                    link.setAttribute('rel', 'stylesheet');
-                    link.setAttribute('href', 'css/badstyle.css');
-                    document.head.appendChild(link);
+
                     checkKonami = 0;
                 } else {
                     checkKonami = 0;
@@ -288,78 +281,67 @@
     // LA SESSION S'APPELLE "cadeaux"
     // LES IDs DES CADEAUX DOIVENT S'APPELER "cadeauX"
 
-    var kdo1 = document.getElementById("cadeau1");
-    kdo1.addEventListener("click", sessionCadeaux("cadeau1"));
-    document.getElementById("cadeau2").addEventListener("click", sessionCadeaux("cadeau2"));
-    document.getElementById("cadeau3").addEventListener("click", sessionCadeaux("cadeau3"));
-    document.getElementById("cadeau4").addEventListener("click", sessionCadeaux("cadeau4"));
-    document.getElementById("cadeau5").addEventListener("click", sessionCadeaux("cadeau5"));
-    document.getElementById("cadeau6").addEventListener("click", sessionCadeaux("cadeau6"));
-    document.getElementById("cadeau7").addEventListener("click", sessionCadeaux("cadeau7"));
-    document.getElementById("cadeau8").addEventListener("click", sessionCadeaux("cadeau8"));
-    document.getElementById("cadeau9").addEventListener("click", sessionCadeaux("cadeau9"));
-    document.getElementById("cadeau10").addEventListener("click", sessionCadeaux("cadeau10"));
+    document.getElementById("cadeau1").addEventListener("click", function() {
+        sessionCadeaux("cadeau1");
+    });
+    document.getElementById("cadeau2").addEventListener("click", function() {
+        sessionCadeaux("cadeau2");
+    });
+    document.getElementById("cadeau3").addEventListener("click", function() {
+        sessionCadeaux("cadeau3");
+    });
+    document.getElementById("cadeau4").addEventListener("click", function() {
+        sessionCadeaux("cadeau4");
+    });
+    document.getElementById("cadeau5").addEventListener("click", function() {
+        sessionCadeaux("cadeau5");
+    });
+    document.getElementById("cadeau6").addEventListener("click", function() {
+        sessionCadeaux("cadeau6");
+    });
+    document.getElementById("cadeau7").addEventListener("click", function() {
+        sessionCadeaux("cadeau7");
+    });
+    document.getElementById("cadeau8").addEventListener("click", function() {
+        sessionCadeaux("cadeau8");
+    });
+    document.getElementById("cadeau9").addEventListener("click", function() {
+        sessionCadeaux("cadeau9");
+    });
+    document.getElementById("cadeau10").addEventListener("click", function() {
+        sessionCadeaux("cadeau10");
+    });
 
     tabCadeaux = [false, false, false, false, false, false, false, false, false, false]
-
+    var nbkdo = 0;
     function sessionCadeaux(idDuCadeau) {
-        console.log("azfaf")
-        if (localStorage.getItem("cadeaux")) {
 
-            tabCheck = localStorage.getItem("cadeaux");
-            check = 0;
-
-            while (tabCheck[i] == true) {
-                check++;
-            }
-            if (check == 9) {
-                // implémenter l'action a faire quand le joueur a 10 cadeaux
-            }
-
-            switch (idDuCadeau) {
-                case "cadeau1":
-                    tab[0] = true;
-                    localStorage.setItem("cadeaux", tabCadeaux);
-                    break;
-                case "cadeau2":
-                    tab[1] = true;
-                    localStorage.setItem("cadeaux", tabCadeaux);
-                    break;
-                case "cadeau3":
-                    tab[2] = true;
-                    localStorage.setItem("cadeaux", tabCadeaux);
-                    break;
-                case "cadeau4":
-                    tab[3] = true;
-                    localStorage.setItem("cadeaux", tabCadeaux);
-                    break;
-                case "cadeau5":
-                    tab[4] = true;
-                    localStorage.setItem("cadeaux", tabCadeaux);
-                    break;
-                case "cadeau6":
-                    tab[5] = true;
-                    localStorage.setItem("cadeaux", tabCadeaux);
-                    break;
-                case "cadeau7":
-                    tab[6] = true;
-                    localStorage.setItem("cadeaux", tabCadeaux);
-                    break;
-                case "cadeau8":
-                    tab[7] = true;
-                    localStorage.setItem("cadeaux", tabCadeaux);
-                    break;
-                case "cadeau9":
-                    tab[8] = true;
-                    localStorage.setItem("cadeaux", tabCadeaux);
-                    break;
-                case "cadeau10":
-                    tab[9] = true;
-                    localStorage.setItem("cadeaux", tabCadeaux);
-                    break;
-            }
-
+        var kdo = document.getElementById(idDuCadeau);
+        if (kdo.getAttribute("src") != "img/cadeau-open.png") {
+            nbkdo++;
+            kdo.setAttribute("src", "img/cadeau-open.png");
         }
+
+        if (nbkdo == 10) {
+            // implémenter l'action a faire quand le joueur a 10 cadeaux
+            console.log("10 cadeaux");
+        }
+    }
+
+    // FANTIN
+    nbClicksFantin = 0;
+    async function fantin() {
+        nbClicksFantin++;
+        if (nbClicksFantin == 13) {
+            nbClicksFantin = 0;
+            // ouvrir video
+            var videofantin = document.getElementsByTagName("video")[0];
+            videofantin.style.display = "block";
+            videofantin.play();
+            await new Promise(r => setTimeout(r, 10000));
+            videofantin.style.display = "none";
+        }
+
     }
 </script>
 
