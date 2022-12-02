@@ -11,7 +11,11 @@
 
 <body>
     <?php
-        session_start();
+    //session_destroy();
+        require_once("badges.php");
+        if (!session_status() === PHP_SESSION_ACTIVE){
+            session_start();
+        }
         if (!isset($_SESSION['badges'])){
             $_SESSION['badges'] = new Badge();
         }
@@ -48,18 +52,19 @@
         <?php
             require_once('scenario.php');
             require_once('pointsJeu.php');
-            if(session_status() === PHP_SESSION_ACTIVE){
+            if(session_status() == PHP_SESSION_ACTIVE){
                 unset($_SESSION['scenario']);
                 unset($_SESSION['points']);
             }
-            session_start();
+        
+
+
             //session_destroy();    
         
                 
-            if (!isset($_SESSION['scenario'])){
-                echo '<h1>Destin - IST</h1>';
+            if (!isset($_SESSION['scenario']) || isset($_POST['replay'])){
 
-                echo '<p>Répondez aux questions correctement pour gagner des points !</p>';
+                echo '<h1>Répondez aux questions correctement pour gagner des points !</h1>';
                 require_once('scenario.php');
                 $_SESSION['scenario'] = new Scenario();
                 $_SESSION['points'] = new Points();
@@ -76,7 +81,7 @@
                         echo $_SESSION['scenario']->printTips(True);
                     } else {
                         echo "Mauvaise réponse !";
-                        $_SESSION['points']->setCombot(0);
+                        $_SESSION['points']->setCombot(1);
                         $_SESSION['points']->raisePoints(1);
                         echo $_SESSION['scenario']->printTips(False);
                     }
@@ -118,13 +123,12 @@
                 require_once('leaderboard.php');
                 $leaderboard = new leaderboard();
                 $leaderboard->printLeaderboard();
-                unset($_SESSION['scenario']);
-                unset($_SESSION['points']);
-            
             }
-        }
+            echo '<form id="form" action="index.php" method="POST">';
+            echo '<input type="submit" name="replay" value="Rejouer">';
 
-    ?>
+        }
+        ?>
         </section>
 
         <div id="dragtarget" class="dragtarget"></div>
