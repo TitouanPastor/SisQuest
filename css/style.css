@@ -28,6 +28,31 @@ video {
     height: auto;
 }
 
+body {
+    position: relative;
+}
+
+.drag {
+    z-index: 2;
+    position: fixed;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    background-color: blueviolet;
+    user-select: none;
+}
+
+#dragtarget {
+    z-index: 1;
+    position: fixed;
+    cursor: pointer;
+    width: 42px;
+    height: 42px;
+    top: 150px;
+    left: 150px;
+    border:2px solid blueviolet;
+}
+
 /*////////////////////////////////*/
 /*//      Header : Menu         //*/
 /*////////////////////////////////*/
