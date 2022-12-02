@@ -46,7 +46,7 @@
         }
 
         public function AfficherPoints(){
-            echo "Vous avez $this->ptsUser points";
+            echo '<p class="nbpoints">Vous avez '.$this->ptsUser.' points</p>';
         }
 
         public function updatePointsBDD($pseudo){

@@ -18,6 +18,7 @@ main {
 }
 
 video {
+    z-index: 10000;
     display: none;
     position: fixed;
     margin: auto;
@@ -124,28 +125,89 @@ header #cadeau3 {
     color: white;
     font-size: 1.3em;
 }
+
 /*////////////////////////////////*/
 /*//            JEU             //*/
 /*////////////////////////////////*/
-#jeu > h1{
+#jeu>h1 {
     margin-bottom: 10vh;
 }
-#jeu{
-    background-image: url("../img/virus.png");
+
+#jeu {
+    background-image: url("../img/jeurtexture.webp");
+    background-size: auto;
     backdrop-filter: blur(10px);
-    background-size: cover;
-    background-repeat:no-repeat;
     padding-top: 10vh;
     align-items: center;
     justify-content: space-between;
     text-align: center;
     width: 100%;
     height: 90vh;
-    
+
 }
-#reponse {
-    
+
+input {
+    margin: 8px;
+    padding: 5px 10px;
+    border: none;
+    background-color: white;
+    font-size: 1.5em;
+    text-align: center;
+    border-radius: 5px;
+    color: black;
+    font-size: 1.5em;
+    text-align: center;
 }
+
+#question {
+    padding: 3vh 0;
+    font-size: 2em;
+}
+
+label {
+    padding: 15px;
+    font-size: 1.5em;
+}
+
+#text {
+    font-size: 1.3em;
+}
+
+#form {
+    padding-top: 2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.rep {
+    color: rgb(182, 16, 16);
+    font-size: 1.5em;
+    padding: 15px 0;
+}
+
+.brep {
+    font-size: 1.5em;
+    padding: 15px 0;
+}
+
+.nbpoints {
+    font-size: 1.1em;
+    font-weight: 700;
+    padding: 15px 0;
+}
+
+.fin {
+    font-size: 1.5em;
+    padding: 10px 0;
+}
+
+.pseudo {
+    font-size: 1.25em;
+    padding: 5px 0;
+}
+
 
 /*////////////////////////////////*/
 /*//        DIV PRINCIPALE      //*/
