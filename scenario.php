@@ -2,8 +2,8 @@
     class Scenario{ 
         private $arrayScenario;
         private $scenarioPlayed;
-        private const NBSCENARIO  = 3;
-        private const NBPOSER  = 3;
+        private const NBSCENARIO  = 38;
+        private const NBPOSER  = 10;
         private $actualScenario;
 
         public function __construct(){
@@ -41,7 +41,7 @@
         public function printScenario(){ 
             
             $scenario = $this->arrayScenario[$this->actualScenario-1];
-            echo "Question : ".$this->actualScenario."/".$this::NBSCENARIO;
+            echo "Question : ".$this->actualScenario."/".$this::NBPOSER;
             echo "<div id='question'>".$scenario['question']."</div><br>";    
             echo "Choisir la bonne réponse parmis les choix suivants : <br>";
             
@@ -80,6 +80,7 @@
 
         public function getTheme(){
             $scenario = $this->arrayScenario[$this->actualScenario-1];
+            echo $scenario["theme"];
             return $scenario["theme"];
         }
 
