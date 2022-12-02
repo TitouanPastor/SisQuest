@@ -10,6 +10,11 @@ main{
     padding-top: 10vh;
     width: 100%;
 }
+
+.cadeau {
+    cursor: pointer;
+    width: 32px;
+}
 /*////////////////////////////////*/
 /*//      Header : Menu         //*/
 /*////////////////////////////////*/

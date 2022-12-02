@@ -10,6 +10,8 @@
 main {
     width: 100%;
     height: 100%;
+    background-image: url(../img/clickertexture.webp);
+    background-repeat: repeat;
 }
 
 .sida_container {
