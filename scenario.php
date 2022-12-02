@@ -2,8 +2,8 @@
     class Scenario{ 
         private $arrayScenario;
         private $scenarioPlayed;
-        private const NBSCENARIO  = 2;
-        private const NBPOSER  = 2;
+        private const NBSCENARIO  = 3;
+        private const NBPOSER  = 3;
         private $actualScenario;
 
         public function __construct(){
@@ -17,9 +17,9 @@
             require_once('BDD.php');
             $bdd = new BDD();
             for ($i = 1; $i <= $this::NBPOSER ; $i++) {
-                $random = rand(1, $this::NBSCENARIO);
+                $random = rand(5, $this::NBSCENARIO+4);
                 while (in_array($random, $this->scenarioPlayed)) {
-                    $random = rand(1, $this::NBSCENARIO);
+                    $random = rand(5, $this::NBSCENARIO+4   );
                 }
                 array_push($this->scenarioPlayed, $random);
                 $req = $bdd->linkpdo->prepare('select * from scenario where id_scenario = :idScenario');

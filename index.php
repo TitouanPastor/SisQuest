@@ -10,6 +10,13 @@
 </head>
 
 <body>
+    <?php
+        session_start();
+        if (!isset($_SESSION['badges'])){
+            $_SESSION['badges'] = new Badge();
+        }
+        
+    ?>
     <video width="500px" height="500px" playsinline controls>
         <source src="img/fantinvideo.webm" type="video/webm">
     </video>
