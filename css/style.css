@@ -45,6 +45,19 @@ header {
     color: white;
     font-size: 1.3em;
 }
+/*////////////////////////////////*/
+/*//            JEU             //*/
+/*////////////////////////////////*/
+#jeu > h1{
+    margin-bottom: 10vh;
+}
+#jeu{
+    padding-top: 10vh;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    width: 80vw;
+}
 
 /*////////////////////////////////*/
 /*//        DIV PRINCIPALE      //*/

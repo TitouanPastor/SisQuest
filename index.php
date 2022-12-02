@@ -37,14 +37,14 @@
             require_once('scenario.php');
             require_once('pointsJeu.php');
             session_start();
-            //session_destroy();
+            session_destroy();
             ?>
 
-
+            <h1>Jeu</h1>
             <?php
             if (!isset($_COOKIE['pseudo'])){
                 echo '<p>Avant de jouer rentrez votre pseudo :</p>
-                <form action="destin-IST.php" method="POST">';
+                <form action="index.php" method="POST">';
                 echo '<input type="text" name="pseudo" id="pseudo" placeholder="Votre pseudo">';
                 echo '<input type="submit" name="validerPseudo" value="Valider">';
                 echo '</form>';
@@ -55,13 +55,11 @@
             
             }
             else{
-                echo '<form id="form" action="destin-IST.php" method="POST">';
+                echo '<form id="form" action="index.php" method="POST">';
                 echo "Connecter en tant que : ".$_COOKIE['pseudo'];
                 echo '<input type="submit" name="deco" value="Se déconnecter!">';
 
                 if (!isset($_SESSION['scenario'])) {
-                    echo '<h1>Destin - IST</h1>';
-
                     echo '<p>Répondez aux questions correctement pour gagner des points !</p>';
                     require_once('scenario.php');
                     $_SESSION['scenario'] = new Scenario();
