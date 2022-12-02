@@ -9,10 +9,10 @@
         }
 
         public function printLeaderboard(){
-            echo "Leaderboard";
+            echo "<br><br><h3>Classement<h3/><br>";
             $this->req->execute();
             while($resultat = $this->req->fetch()){
-                echo $resultat["pseudo"]." ".$resultat["date_score"]." ".$resultat["points"]."<br>";
+                echo $resultat["pseudo"]." ".$resultat["date_score"]." ".$resultat["points"]."<br><br>";
 
             
             }

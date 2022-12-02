@@ -7,8 +7,10 @@
     <title>Mes badges</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-    <h1>Vos badges </h1>
+<body class="body-badges">
+    <h1>Vos badges</h1>
+    <p>Voici les badges que nous aurions voulu implanter comme récompense en fonction des scores dans le mini-jeu, et des easters eggs.</p>
+    <a href="index.php" class="link-retour">Retour à l'accueil</a>
     <?php
         require_once('badges.php');
         $badges = new Badge();
@@ -36,10 +38,7 @@
         $badges->addBadges('SIDA.png');
         $badges->addBadges('Vaccin.png');
         $badges->addBadges('VIH.png');
-        $badges->printBadges();
-
-
-        
+        $badges->printBadges();        
     ?>
 </body>
 </html>

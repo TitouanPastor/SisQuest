@@ -17,9 +17,9 @@
             require_once('BDD.php');
             $bdd = new BDD();
             for ($i = 1; $i <= $this::NBPOSER ; $i++) {
-                $random = rand(5, $this::NBSCENARIO+4);
+                $random = rand(5, $this::NBSCENARIO+5);
                 while (in_array($random, $this->scenarioPlayed)) {
-                    $random = rand(5, $this::NBSCENARIO+4   );
+                    $random = rand(5, $this::NBSCENARIO+5);
                 }
                 array_push($this->scenarioPlayed, $random);
                 $req = $bdd->linkpdo->prepare('select * from scenario where id_scenario = :idScenario');

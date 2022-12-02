@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SidaCaca | SIS ASSOCIATION</title>
+    <title>SisQuest | SIS ASSOCIATION</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -13,7 +13,6 @@
     <?php
     //session_destroy();
         require_once("badges.php");
-        
         if (!isset($_SESSION['badges'])){
                 $_SESSION['badges'] = new Badge();
         }
@@ -23,7 +22,7 @@
     <video width="500px" height="500px" playsinline controls>
         <source src="img/fantinvideo.webm" type="video/webm">
     </video>
-    <img src="img/photogroupe.jpg" class="photo-groupe">
+    <img src="img/photogroupe.jpg" class="photo-groupe" alt="Photo de notre groupe">
     <header>
         <ul id="menu">
             <li><a id="logo" onclick="fantin()" href="#"><img src="img/logo.png"></a></li>
@@ -109,7 +108,7 @@
 
             if (isset($_POST['send'])) {
                 $_SESSION['points']->updatePointsBDD($_POST['pseudo']);
-                echo 'Votre score a été envoyé !';
+                echo '<span style="font-size=1.3em;">Votre score a été envoyé !<span/>';
                 require_once('leaderboard.php');
                 $leaderboard = new leaderboard();
                 $leaderboard->printLeaderboard();
@@ -126,7 +125,7 @@
                 <h1>Sujet</h1>
                 <div class="contenu">
                     <img class="cadeau kdo2" id="cadeau4" src="img/cadeau.png" alt="Un cadeau">
-                    <img class="img-article" src="img/aubergine.gif" alt="">
+                    <img class="img-article" src="img/aubergine.gif" alt="Une aubergine">
                     <p>L'association Sida Info Service (SIS) nous a demandé de réaliser une application pour parler de sujets pouvant être difficiles à aborder, comme le sida ou la sexualité en général de façon fun et ludique. <br><br>
                         SIS association lutte contre le VIH, ainsi que les IST et les hépatites. Elle promeut les dépistages des IST. Elle cherche à sensibiliser les gens sur les différentes IST qui existent et comment s’en protéger et défaire les préjugés existant sur les IST. Pour atteindre leur objectif, SIS association se charge d’écouter chaque personne en l'accueillant avec respect, bienveillance et sans jugement. Informer pour se protéger, se soigner et connaître ses droits. Orienter selon les besoins de chacun. Récolter et partager des témoignages permet d’informer les gens. Soutenir face aux inquiétudes et à la solitude. Lutter contre toutes les formes de discrimination et d’exclusion.
                     </p>
@@ -135,7 +134,7 @@
             <article id="info2" class="information-article reverse">
                 <h1>Nuit de l'info</h1>
                 <div class="contenu">
-                    <img class="img-article" src="img/peche.gif" alt="">
+                    <img class="img-article" src="img/peche.gif" alt="Une peche">
                     <p>Cette application a été réalisée lors de la Nuit de l’info. La Nuit de l’Info est une compétition nationale qui réunit étudiants, enseignants et entreprises pour travailler ensemble sur le développement d’une application web. <br> Elle se déroule cette nuit du 1er au 2 décembre . 15h de codage, de réflexion pour concocter cette application web et de nombreux défis à relever comme de la programmation verte, de l'accessibilité ou bien des easter eggs.<img class="cadeau" id="cadeau5" src="img/cadeau.png" alt="Un cadeau"></p>
                 </div>
             </article>

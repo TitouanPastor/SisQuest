@@ -15,9 +15,9 @@
         }
 
         public function printBadges(){
-            echo '<div>';
+            echo '<div class="container-badge">';
             foreach($this->listeBadges as $badge){
-                echo '<div> <img style="width:70px;height:70px;" src="badges/'.$badge.'">'.explode('.', $badge)[0].'</div>';
+                echo '<div class="badge-item"> <img style="width:70px;height:70px;" src="badges/'.$badge.'">'.explode('.', $badge)[0].'</div>';
             }
             echo '</div>';
         }

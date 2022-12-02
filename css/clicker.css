@@ -5,6 +5,7 @@
     font-family: 'Montserrat', sans-serif;
     scroll-behavior: smooth;
     user-select: none;
+    color: white;
 }
 
 main {
@@ -48,13 +49,15 @@ main {
     height: 15px;
 }
 
-.link-retour {
+.link-retour, .link-badge {
     margin-top: 8px;
     display: none;
     text-decoration: none;
     background-color: rgb(0, 0, 0);
     color: rgb(255, 255, 255);
-    padding: 4px;
+    padding: 5px 8px;
     border-radius: 5px;
 }
+
+
 
