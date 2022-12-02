@@ -17,7 +17,7 @@
             session_start();
         }
         if (!isset($_SESSION['badges'])){
-            $_SESSION['badges'] = new Badge();
+                $_SESSION['badges'] = new Badge();
         }
         
     ?>

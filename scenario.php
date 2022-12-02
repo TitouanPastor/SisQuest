@@ -78,6 +78,11 @@
            
         }
 
+        public function getTheme(){
+            $scenario = $this->arrayScenario[$this->actualScenario-1];
+            return $scenario["theme"];
+        }
+
         
     }
 

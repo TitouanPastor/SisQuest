@@ -7,12 +7,10 @@
     <title>Mes badges</title>
 </head>
 <body>
+    <h1>Vos badges </h1>
     <?php
         require_once('badges.php');
-        $badges = new Badge();
-        $badges->addBadges('pixil-frame-0_14.png');
-        $badges->addBadges('pixil-frame-0_16.png');
-        $badges->printBadges();
+        $_SESSION['badges']->printBadges();
     ?>
 </body>
 </html>
