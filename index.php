@@ -13,11 +13,9 @@
     <?php
     //session_destroy();
         require_once("badges.php");
-        if (!session_status() === PHP_SESSION_ACTIVE){
-            session_start();
-        }
+        
         if (!isset($_SESSION['badges'])){
-            $_SESSION['badges'] = new Badge();
+                $_SESSION['badges'] = new Badge();
         }
         
     ?>
@@ -27,7 +25,7 @@
     </video>
     <header>
         <ul id="menu">
-            <li><a id="logo" onclick="fantin()" href="#"><img src="img/logo.gif"></a></li>
+            <li><a id="logo" onclick="fantin()" href="#"><img src="img/logo.png"></a></li>
             <img class="cadeau" id="cadeau1" src="img/cadeau.png" alt="Un cadeau">
             <li><a href="#info1">Sujet</a></li>
             <li><a href="#info2">Nuit de l'info</a></li>
@@ -41,28 +39,31 @@
         <?php
             require_once('scenario.php');
             require_once('pointsJeu.php');
+        
             if(session_status() == PHP_SESSION_ACTIVE){
                 unset($_SESSION['scenario']);
                 unset($_SESSION['points']);
             }
-        
-
 
             //session_destroy();    
-        
-                
+            session_start();
+            
             if (!isset($_SESSION['scenario']) || isset($_POST['replay'])){
 
                 echo '<h1>Répondez aux questions correctement pour gagner des points !</h1>';
                 require_once('scenario.php');
+               
+                require_once('pointsJeu.php');
                 $_SESSION['scenario'] = new Scenario();
                 $_SESSION['points'] = new Points();
                 $_SESSION['scenario']->randomScenario();
                 $_SESSION['scenario']->printScenario();
                 echo '<input type="submit" name="valider" value="Valider le choix">';
             }else{
+                
                 if (isset($_POST['valider'])) {
                     echo '<form id="form" action="index.php" method="POST">';
+                    echo $_POST['choix'];
                     if ($_SESSION['points']->reponseCorrect($_POST['choix'])) {
                         echo "Bonne réponse !";
                         $_SESSION['points']->addPoints(1);
@@ -264,7 +265,7 @@
                 if (touche == A) {
                     //KONAMI CODE FAIT !!!!!
                     // A IMPLEMENTER
-                    document.querySelector('.infokonami').innerHTML = "KONAMI CODE FAIT !!!!!";
+                    window.location.href = "pages/clicker.html";
 
                     checkKonami = 0;
                 } else {
@@ -341,14 +342,14 @@
         if (checkPossedeImage) {
             checkPossedeImage = false;
             if (
-                event.clientX <= target.offsetLeft + 42 &&
+                event.clientX <= target.offsetLeft + 100 &&
                 event.clientX >= target.offsetLeft &&
-                event.clientY <= target.offsetTop + 42 &&
+                event.clientY <= target.offsetTop + 100 &&
                 event.clientY >= target.offsetTop && checkPossedeImage == false
             ) {
                 // C GENIAL C SUPER C LE FEU TA GAGNE
                 var spaninfodrag = document.getElementById('dragtarget');
-                spaninfodrag.innerHTML = "C GENIAL C SUPER C LE FEU TA GAGNE";
+                window.location.href = "pages/clicker.html";
             }
         } else {
             checkPossedeImage = true;
