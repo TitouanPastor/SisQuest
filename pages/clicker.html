@@ -32,10 +32,11 @@
     var pourcentpv = document.querySelector('.pourcentpv');
     var result = document.querySelector('.result');
     var link_retour = document.querySelector('.link-retour');
+    var sidacontainer = document.querySelector('.sida_container');
 
     window.onclick = function () {
         if (pv > 0) {
-            pv -= 10;
+            pv -= 2;
             barpv.style.width = pv + "px";
             pourcentpv.innerHTML = Math.round(pv/maxpv * 100) + "%";
         }
@@ -43,6 +44,7 @@
             result.innerHTML = "Le sida est mort ! bien joué !";
             link_retour.innerHTML = "Retour à l'accueil";
             link_retour.style.display = "block";
+            sidacontainer.style.backgroundImage = "url('../img/sidamort.png')";
         }
     }
     document.body.appendChild(clicker);
