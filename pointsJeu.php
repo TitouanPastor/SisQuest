@@ -26,7 +26,10 @@
         }
 
         public function raisePoints($pts){
-            $this->ptsUser -= $pts;
+            if ($this->ptsUser-1 >=0 ){
+                $this->ptsUser -= $pts;
+            }
+            
         }
 
         public function AfficherPoints(){
