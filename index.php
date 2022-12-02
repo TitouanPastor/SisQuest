@@ -17,6 +17,7 @@
         }
         
     ?>
+    <div id="drag" class="drag"></div>
     <video width="500px" height="500px" playsinline controls>
         <source src="img/fantinvideo.webm" type="video/webm">
     </video>
@@ -41,94 +42,92 @@
         <img class="cadeau" id="cadeau9" src="img/cadeau.png" alt="Un cadeau">
         <img class="cadeau" id="cadeau10" src="img/cadeau.png" alt="Un cadeau">
 
+        <span class="infodragdrop"></span>
         <span class="infokonami"></span>
         <section id="jeu">
-            <?php
+        <?php
             require_once('scenario.php');
             require_once('pointsJeu.php');
-            session_start();
-            session_destroy();
-            ?>
-
-            <h1>Jeu</h1>
-            <?php
-            if (!isset($_COOKIE['pseudo'])) {
-                echo '<p>Avant de jouer rentrez votre pseudo :</p>
-                <form action="index.php" method="POST">';
-                echo '<input type="text" name="pseudo" id="pseudo" placeholder="Votre pseudo">';
-                echo '<input type="submit" name="validerPseudo" value="Valider">';
-                echo '</form>';
-                if (isset($_POST['validerPseudo'])) {
-                    $pseudo = $_POST['pseudo'];
-                    setcookie('pseudo', $pseudo, time() + 365 * 24, null, null, false, true);
-                }
-            
+            if(session_status() === PHP_SESSION_ACTIVE){
+                unset($_SESSION['scenario']);
+                unset($_SESSION['points']);
             }
-            else{
-                echo '<form id="form" action="index.php" method="POST">';
-                echo "Connecter en tant que : ".$_COOKIE['pseudo'];
-                echo '<input type="submit" name="deco" value="Se déconnecter!">';
+            session_start();
+            //session_destroy();    
+        
+                
+            if (!isset($_SESSION['scenario'])){
+                echo '<h1>Destin - IST</h1>';
 
-                if (!isset($_SESSION['scenario'])) {
-                    echo '<p>Répondez aux questions correctement pour gagner des points !</p>';
-                    require_once('scenario.php');
-                    $_SESSION['scenario'] = new Scenario();
-                    $_SESSION['points'] = new Points();
-                    $_SESSION['scenario']->randomScenario();
-                    $_SESSION['scenario']->printScenario();
-                    echo '<input type="submit" name="valider" value="Valider le choix">';
-                } else {
-                    if (isset($_POST['valider'])) {
-
-                        if ($_SESSION['points']->reponseCorrect($_POST['choix'])) {
-                            echo "Bonne réponse !";
-                            $_SESSION['points']->addPoints(1);
-                            $_SESSION['points']->setCombot($_SESSION['points']->getCombo() + 1);
-                            echo $_SESSION['scenario']->printTips(True);
-                        } else {
-                            echo "Mauvaise réponse !";
-                            $_SESSION['points']->setCombot(0);
-                            $_SESSION['points']->raisePoints(1);
-                            echo $_SESSION['scenario']->printTips(False);
-                        }
-                        echo $_SESSION['points']->AfficherPoints();
-                        if ($_SESSION['scenario']->endgame()) {
-                            echo '<input type="submit" name="end" value="Terminer!">';
-                        } else {
-                            echo '<input type="submit" name="next" value="Prochaine question">';
-                            if (isset($_POST['next'])) {
-                                echo "oktamer";
-                                $_SESSION['scenario']->nextScenario();
-                                $_SESSION['scenario']->printScenario();
-                                echo '<input type="submit" name="valider" value="Valider le choix">';
-                            }
+                echo '<p>Répondez aux questions correctement pour gagner des points !</p>';
+                require_once('scenario.php');
+                $_SESSION['scenario'] = new Scenario();
+                $_SESSION['points'] = new Points();
+                $_SESSION['scenario']->randomScenario();
+                $_SESSION['scenario']->printScenario();
+                echo '<input type="submit" name="valider" value="Valider le choix">';
+            }else{
+                if (isset($_POST['valider'])) {
+                    echo '<form id="form" action="index.php" method="POST">';
+                    if ($_SESSION['points']->reponseCorrect($_POST['choix'])) {
+                        echo "Bonne réponse !";
+                        $_SESSION['points']->addPoints(1);
+                        $_SESSION['points']->setCombot($_SESSION['points']->getCombo() + 1);
+                        echo $_SESSION['scenario']->printTips(True);
+                    } else {
+                        echo "Mauvaise réponse !";
+                        $_SESSION['points']->setCombot(0);
+                        $_SESSION['points']->raisePoints(1);
+                        echo $_SESSION['scenario']->printTips(False);
+                    }
+                    echo $_SESSION['points']->AfficherPoints();
+                    if ($_SESSION['scenario']->endgame()) {
+                        echo '<input type="submit" name="end" value="Terminer!">';
+                    } else {
+                        echo '<input type="submit" name="next" value="Prochaine question">';
+                        if (isset($_POST['next'])) {
+                            echo "oktamer";
+                            $_SESSION['scenario']->nextScenario();
+                            $_SESSION['scenario']->printScenario();
+                            echo '<input type="submit" name="valider" value="Valider le choix">';
                         }
                     }
                 }
-                if (isset($_POST['deco'])) {
+            
+            if (isset($_POST['deco'])) {
 
-                    setcookie('pseudo', '', time() - 3600 * 24, '/', '', false, false);
-                }
-
-                if (isset($_POST['next'])) {
-                    $_SESSION['scenario']->nextScenario();
-                    $_SESSION['scenario']->printScenario();
-                    echo '<input type="submit" name="valider" value="Valider le choix">';
-                }
-                if (isset($_POST['end'])) {
-                    echo 'fin du jeu ! bravo !';
-                    $_SESSION['points']->updatePointsBDD();
-                    require_once('leaderboard.php');
-                    $leaderboard = new leaderboard();
-                    $leaderboard->printLeaderboard();
-                    session_destroy();
-                }
+                setcookie('pseudo', '', time() - 3600 * 24);
             }
-            ?>
 
+            if (isset($_POST['next'])) {
+                $_SESSION['scenario']->nextScenario();
+                $_SESSION['scenario']->printScenario();
+                echo '<input type="submit" name="valider" value="Valider le choix">';
+            }
+            if (isset($_POST['end'])) {
+                echo '<form id="form" action="index.php" method="POST">';
+                echo 'fin du jeu ! bravo !';
+                echo 'Entrer votre pseudo : <input type="text" name="pseudo" id="pseudo">';
+                echo '<input type="submit" name="send" value="Envoyer le score">';
+                
+            }
 
-            </form>
+            if (isset($_POST['send'])) {
+                $_SESSION['points']->updatePointsBDD($_POST['pseudo']);
+                echo 'Votre score a été envoyé !';
+                require_once('leaderboard.php');
+                $leaderboard = new leaderboard();
+                $leaderboard->printLeaderboard();
+                unset($_SESSION['scenario']);
+                unset($_SESSION['points']);
+            
+            }
+        }
+
+    ?>
         </section>
+
+        <div id="dragtarget" class="dragtarget"></div>
         <section id="information">
             <article id="info1" class="information-article">
                 <h1>Informations 1</h1>
@@ -321,6 +320,7 @@
 
     tabCadeaux = [false, false, false, false, false, false, false, false, false, false]
     var nbkdo = 0;
+
     function sessionCadeaux(idDuCadeau) {
 
         var kdo = document.getElementById(idDuCadeau);
@@ -348,8 +348,38 @@
             await new Promise(r => setTimeout(r, 10000));
             videofantin.style.display = "none";
         }
-
     }
+
+    // EASTEREGG DRAG DROP
+
+    // ON GET LA DIV DRAGGABLE
+    var drag = document.getElementById("drag");
+    var target = document.getElementById("dragtarget");
+    var checkPossedeImage = false;
+    drag.addEventListener("click", (event) => {
+        console.log(checkPossedeImage)
+        if (checkPossedeImage) {
+            checkPossedeImage = false;
+            if (
+                event.clientX <= target.offsetLeft + 42 &&
+                event.clientX >= target.offsetLeft &&
+                event.clientY <= target.offsetTop + 42 &&
+                event.clientY >= target.offsetTop && checkPossedeImage == false
+            ) {
+                // C GENIAL C SUPER C LE FEU TA GAGNE
+                var spaninfodrag = document.getElementById('dragtarget');
+                spaninfodrag.innerHTML = "C GENIAL C SUPER C LE FEU TA GAGNE";
+            }
+        } else {
+            checkPossedeImage = true;
+            document.addEventListener("mousemove", (event) => {
+                if (checkPossedeImage) {
+                    drag.style.left = event.clientX - 10 + "px";
+                    drag.style.top = event.clientY - 10 + "px";
+                }
+            });
+        }
+    });
 </script>
 
 </html>
