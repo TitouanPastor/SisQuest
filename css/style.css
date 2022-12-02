@@ -14,6 +14,7 @@ main {
 .cadeau {
     cursor: pointer;
     width: 32px;
+    height: auto;
 }
 
 video {
@@ -58,12 +59,35 @@ body {
 /*////////////////////////////////*/
 
 header {
+    position: relative;
+    z-index: 100;
     display: block;
     position: fixed;
     width: 100vw;
-    height: 10vh;
-    padding: 1vw;
-    background-color: rgb(26, 26, 26);
+    height: auto;
+    padding: 0.5vw;
+    background-color: rgb(36, 36, 36);
+}
+
+header #cadeau3 {
+    z-index: 1000;
+    position: absolute;
+    top: -5%;
+    right: 0.45%;
+    transform: rotateZ(240deg);
+    width: 32px;
+}
+
+#cadeau1 {
+    position: absolute;
+    display: none;
+    z-index: 1;
+    top: -8%;
+}
+
+#logo {
+    position: relative;
+    z-index: 2;
 }
 
 #menu {
@@ -78,7 +102,7 @@ header {
 }
 
 #menu>li>a>img {
-    max-height: 6vh;
+    max-height: 8vh;
 }
 
 #menu>li a {
@@ -99,6 +123,9 @@ header {
     text-align: center;
     width: 80vw;
 }
+#reponse {
+    
+}
 
 /*////////////////////////////////*/
 /*//        DIV PRINCIPALE      //*/
@@ -110,6 +137,10 @@ header {
     background-color: rgb(156, 175, 255);
 }
 
+section#information {
+    padding-top: 5em;
+}
+
 .information-article {
 
     padding: 5em 0;
@@ -119,7 +150,7 @@ header {
     align-items: center;
     justify-content: center;
     width: 80vw;
-    height: 75vh;
+    height: 85vh;
 }
 
 .information-article>.contenu {
@@ -134,11 +165,38 @@ header {
 }
 
 .information-article.reverse .contenu {
+    position: relative;
     flex-direction: row-reverse;
 }
 
-.information-article>.contenu>img {
+.information-article>.contenu>.img-article {
     width: 20vw;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.information-article>.contenu .cadeau {
+    width: 20px;
+    margin-bottom: -4px;
+}
+
+.kdo2 {
+    z-index: 2;
+    position: absolute;
+    left: 21.7%;
+    top: 53.5%;
+}
+
+h1 {
+    font-size: 2.3em;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+.contenu p {
+    font-size: 1.1em;
+    line-height: 24px;
 }
 
 /*////////////////////////////////*/
@@ -146,11 +204,27 @@ header {
 /*////////////////////////////////*/
 
 footer {
+    position: relative;
     width: 100%;
     height: auto;
-    padding: 1vw;
+    padding: 2vw;
     background-color: black;
     color: white;
+}
+
+footer .cadeau {
+    z-index: 1;
+    top: 11%;
+    left: 2%;
+    position: absolute;
+    width: 18px;
+    transform: rotateZ(45deg);
+}
+
+footer h2 {
+    pointer-events: none;
+    position: relative;
+    z-index: 100;
 }
 
 .divfooter {

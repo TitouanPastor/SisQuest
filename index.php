@@ -11,7 +11,11 @@
 
 <body>
     <?php
-        session_start();
+    //session_destroy();
+        require_once("badges.php");
+        if (!session_status() === PHP_SESSION_ACTIVE){
+            session_start();
+        }
         if (!isset($_SESSION['badges'])){
                 $_SESSION['badges'] = new Badge();
         }
@@ -23,43 +27,33 @@
     </video>
     <header>
         <ul id="menu">
-            <li><a onclick="fantin()" href="#"><img src="imG/imageTest.jpg"></a></li>
-            <li><a href="#info1">info1</a></li>
-            <li><a href="#info2">info2</a></li>
-            <li><a href="#info3">info3</a></li>
+            <li><a id="logo" onclick="fantin()" href="#"><img src="img/logo.gif"></a></li>
+            <img class="cadeau" id="cadeau1" src="img/cadeau.png" alt="Un cadeau">
+            <li><a href="#info1">Sujet</a></li>
+            <li><a href="#info2">Nuit de l'info</a></li>
         </ul>
+        <img class="cadeau" id="cadeau3" src="img/cadeau.png" alt="Un cadeau">
     </header>
     <main>
-
-        <img class="cadeau" id="cadeau1" src="img/cadeau.png" alt="Un cadeau">
-        <img class="cadeau" id="cadeau2" src="img/cadeau.png" alt="Un cadeau">
-        <img class="cadeau" id="cadeau3" src="img/cadeau.png" alt="Un cadeau">
-        <img class="cadeau" id="cadeau4" src="img/cadeau.png" alt="Un cadeau">
-        <img class="cadeau" id="cadeau5" src="img/cadeau.png" alt="Un cadeau">
-        <img class="cadeau" id="cadeau6" src="img/cadeau.png" alt="Un cadeau">
-        <img class="cadeau" id="cadeau7" src="img/cadeau.png" alt="Un cadeau">
-        <img class="cadeau" id="cadeau8" src="img/cadeau.png" alt="Un cadeau">
-        <img class="cadeau" id="cadeau9" src="img/cadeau.png" alt="Un cadeau">
-        <img class="cadeau" id="cadeau10" src="img/cadeau.png" alt="Un cadeau">
-
         <span class="infodragdrop"></span>
         <span class="infokonami"></span>
         <section id="jeu">
         <?php
             require_once('scenario.php');
             require_once('pointsJeu.php');
-            if(session_status() === PHP_SESSION_ACTIVE){
+            if(session_status() == PHP_SESSION_ACTIVE){
                 unset($_SESSION['scenario']);
                 unset($_SESSION['points']);
             }
-            session_start();
+        
+
+
             //session_destroy();    
         
                 
-            if (!isset($_SESSION['scenario'])){
-                echo '<h1>Destin - IST</h1>';
+            if (!isset($_SESSION['scenario']) || isset($_POST['replay'])){
 
-                echo '<p>Répondez aux questions correctement pour gagner des points !</p>';
+                echo '<h1>Répondez aux questions correctement pour gagner des points !</h1>';
                 require_once('scenario.php');
                 $_SESSION['scenario'] = new Scenario();
                 $_SESSION['points'] = new Points();
@@ -76,7 +70,7 @@
                         echo $_SESSION['scenario']->printTips(True);
                     } else {
                         echo "Mauvaise réponse !";
-                        $_SESSION['points']->setCombot(0);
+                        $_SESSION['points']->setCombot(1);
                         $_SESSION['points']->raisePoints(1);
                         echo $_SESSION['scenario']->printTips(False);
                     }
@@ -118,45 +112,39 @@
                 require_once('leaderboard.php');
                 $leaderboard = new leaderboard();
                 $leaderboard->printLeaderboard();
-                unset($_SESSION['scenario']);
-                unset($_SESSION['points']);
-            
             }
+            echo '<form id="form" action="index.php" method="POST">';
+            echo '<input type="submit" name="replay" value="Rejouer">';
+
         }
-
-    ?>
+        ?>
         </section>
-
         <div id="dragtarget" class="dragtarget"></div>
         <section id="information">
             <article id="info1" class="information-article">
-                <h1>Informations 1</h1>
+                <h1>Sujet</h1>
                 <div class="contenu">
-                    <img src="img/imageTest.jpg" alt="">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi tempora iure dignissimos placeat suscipit nostrum error voluptatem, dolor non architecto eum delectus distinctio veritatis minima mollitia eligendi quam maxime aliquid!</p>
+                    <img class="cadeau kdo2" id="cadeau4" src="img/cadeau.png" alt="Un cadeau">
+                    <img class="img-article" src="img/aubergine.gif" alt="">
+                    <p>L'association Sida Info Service (SIS) nous a demandé de réaliser une application pour parler de sujets pouvant être difficiles à aborder, comme le sida ou la sexualité en général de façon fun et ludique. <br><br>
+                        SIS association lutte contre le VIH, ainsi que les IST et les hépatites. Elle promeut les dépistages des IST. Elle cherche à sensibiliser les gens sur les différentes IST qui existent et comment s’en protéger et défaire les préjugés existant sur les IST. Pour atteindre leur objectif, SIS association se charge d’écouter chaque personne en l'accueillant avec respect, bienveillance et sans jugement. Informer pour se protéger, se soigner et connaître ses droits. Orienter selon les besoins de chacun. Récolter et partager des témoignages permet d’informer les gens. Soutenir face aux inquiétudes et à la solitude. Lutter contre toutes les formes de discrimination et d’exclusion.
+                    </p>
                 </div>
             </article>
             <article id="info2" class="information-article reverse">
-                <h1>Informations 2</h1>
+                <h1>Nuit de l'info</h1>
                 <div class="contenu">
-                    <img src="img/imageTest.jpg" alt="">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi tempora iure dignissimos placeat suscipit nostrum error voluptatem, dolor non architecto eum delectus distinctio veritatis minima mollitia eligendi quam maxime aliquid!</p>
+                    <img class="img-article" src="img/peche.gif" alt="">
+                    <p>Cette application a été réalisée lors de la Nuit de l’info. La Nuit de l’Info est une compétition nationale qui réunit étudiants, enseignants et entreprises pour travailler ensemble sur le développement d’une application web. <br> Elle se déroule cette nuit du 1er au 2 décembre . 15h de codage, de réflexion pour concocter cette application web et de nombreux défis à relever comme de la programmation verte, de l'accessibilité ou bien des easter eggs.<img class="cadeau" id="cadeau5" src="img/cadeau.png" alt="Un cadeau"></p>
                 </div>
             </article>
-            <article id="info3" class="information-article">
-                <h1>Informations 3</h1>
-                <div class="contenu">
-                    <img src="img/imageTest.jpg" alt="">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi tempora iure dignissimos placeat suscipit nostrum error voluptatem, dolor non architecto eum delectus distinctio veritatis minima mollitia eligendi quam maxime aliquid!</p>
-                </div>
-            </article>
-
         </section>
 
     </main>
     <footer>
         <div id="membres" class="divfooter">
             <h2>Les membres de l'équipe :</h1>
+            <img class="cadeau" id="cadeau2" src="img/cadeau.png" alt="Un cadeau">
                 <ul>
                     <li><a href="blablabla" target="_blank">Nicolas Rousseau</a></li>
                     <li><a href="blablabla" target="_blank">Quentin Couturier</a></li>
@@ -187,6 +175,14 @@
 
 </body>
 <script>
+
+    var cadeau1 = document.getElementById('cadeau1');
+    var logo   = document.getElementById('logo');
+
+    logo.addEventListener('mouseover', function(){
+        cadeau1.style.display = "block";
+    });
+
     // KONAMI CODE
 
     checkKonami = 0;
@@ -302,23 +298,7 @@
     document.getElementById("cadeau5").addEventListener("click", function() {
         sessionCadeaux("cadeau5");
     });
-    document.getElementById("cadeau6").addEventListener("click", function() {
-        sessionCadeaux("cadeau6");
-    });
-    document.getElementById("cadeau7").addEventListener("click", function() {
-        sessionCadeaux("cadeau7");
-    });
-    document.getElementById("cadeau8").addEventListener("click", function() {
-        sessionCadeaux("cadeau8");
-    });
-    document.getElementById("cadeau9").addEventListener("click", function() {
-        sessionCadeaux("cadeau9");
-    });
-    document.getElementById("cadeau10").addEventListener("click", function() {
-        sessionCadeaux("cadeau10");
-    });
 
-    tabCadeaux = [false, false, false, false, false, false, false, false, false, false]
     var nbkdo = 0;
 
     function sessionCadeaux(idDuCadeau) {
@@ -329,7 +309,7 @@
             kdo.setAttribute("src", "img/cadeau-open.png");
         }
 
-        if (nbkdo == 10) {
+        if (nbkdo == 5) {
             // implémenter l'action a faire quand le joueur a 10 cadeaux
             console.log("10 cadeaux");
         }

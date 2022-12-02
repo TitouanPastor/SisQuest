@@ -42,14 +42,14 @@
             
             $scenario = $this->arrayScenario[$this->actualScenario-1];
             echo "Question : ".$this->actualScenario."/".$this::NBSCENARIO;
-            echo $scenario['question']."<br>";    
+            echo "<div id='question'>".$scenario['question']."</div><br>";    
             echo "Choisir la bonne réponse parmis les choix suivants : <br>";
             
-            echo '<form id="form" action="destin-IST.php" method="POST">';
+            echo '<form id="form" action="index.php" method="POST">';
             $rep = explode(":",$scenario['reponse']);
             for ($i = 1; $i <= $scenario['nbReponse']; $i++) {
-                echo '<input type="radio" id="choix'.$i.'" name="choix" value="'.$i.'">
-                <label for="choix'.$i.'">'.$rep[$i-1].'</label><br>';
+                echo '<div id = "reponse"><input type="radio" id="choix'.$i.'" name="choix" value="'.$i.'">
+                <label for="choix'.$i.'">'.$rep[$i-1].'</label></div><br>';
             }
               
         }
