@@ -52,17 +52,19 @@ header {
 }
 
 .information-article {
+
     padding: 5em 0;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 80%;
+    width: 80vw;
     height: 75vh;
 }
 
-.information-article .contenu {
+.information-article > .contenu {
+    margin-top: auto;
     display: flex;
     gap: 15%;
     align-items: center;
@@ -75,7 +77,9 @@ header {
 .information-article.reverse .contenu {
     flex-direction: row-reverse;
 }
-
+.information-article> .contenu > img {
+    width: 20vw;
+}
 /*////////////////////////////////*/
 /*//           FOOTER           //*/
 /*////////////////////////////////*/
