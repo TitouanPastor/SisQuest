@@ -16,10 +16,12 @@
 
         public function printBadges(){
             foreach($this->listeBadges as $badge){
-                echo ' <img src="badges\\'.$badge.'">';
+                echo ' <img style="width:70px;height:70px;" src="badges/'.$badge.'">';
                 echo $badge;
             }
         }
+
+        
             
         
     }
