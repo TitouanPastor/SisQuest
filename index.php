@@ -23,6 +23,7 @@
     <video width="500px" height="500px" playsinline controls>
         <source src="img/fantinvideo.webm" type="video/webm">
     </video>
+    <img src="img/photogroupe.jpg" class="photo-groupe">
     <header>
         <ul id="menu">
             <li><a id="logo" onclick="fantin()" href="#"><img src="img/logo.png"></a></li>
@@ -265,7 +266,7 @@
                 if (touche == A) {
                     //KONAMI CODE FAIT !!!!!
                     // A IMPLEMENTER
-                    window.location.href = "pages/clicker.html";
+                    window.location.href = "pages/badindex.html";
 
                     checkKonami = 0;
                 } else {
@@ -302,7 +303,7 @@
 
     var nbkdo = 0;
 
-    function sessionCadeaux(idDuCadeau) {
+    async function sessionCadeaux(idDuCadeau) {
 
         var kdo = document.getElementById(idDuCadeau);
         if (kdo.getAttribute("src") != "img/cadeau-open.png") {
@@ -311,8 +312,11 @@
         }
 
         if (nbkdo == 5) {
-            // implémenter l'action a faire quand le joueur a 10 cadeaux
-            console.log("10 cadeaux");
+            console.log("zgzeg")
+            var photogroupe = document.querySelector(".photo-groupe");
+            photogroupe.style.display = "block";
+            await new Promise(r => setTimeout(r, 4000));
+            photogroupe.style.display = "none";
         }
     }
 
