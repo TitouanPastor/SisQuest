@@ -35,7 +35,7 @@
 
         public function nextScenario(){
             $this->actualScenario++;
-            echo "++";
+
         }
 
         public function printScenario(){ 
