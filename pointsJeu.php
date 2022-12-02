@@ -33,12 +33,12 @@
             echo "Vous avez $this->ptsUser points";
         }
 
-        public function updatePointsBDD(){
+        public function updatePointsBDD($pseudo){
             require_once('BDD.php');
             $bdd = new BDD();
             $exist = $bdd->linkpdo->prepare('SELECT * FROM leaderboard WHERE pseudo = :pseudo');
             $exist->execute(array(
-                'pseudo' => $_COOKIE['pseudo']
+                'pseudo' => $pseudo
             ));
 
             $resultat = $exist->fetch();
@@ -47,14 +47,14 @@
                     $req = $bdd->linkpdo->prepare('UPDATE leaderboard SET points = :points WHERE pseudo = :pseudo');
                     $req->execute(array(
                         'points' => $this->ptsUser,
-                        'pseudo' => $_COOKIE['pseudo']
+                        'pseudo' => $pseudo
                     ));
                 }   
             }
             else{
                 $req = $bdd->linkpdo->prepare('INSERT INTO leaderboard VALUES (NULL, :pseudo, :date, :points)');
                 $req->execute(array(
-                    'pseudo' => $_COOKIE['pseudo'],
+                    'pseudo' => $pseudo,
                     'date' => date("Y-m-d"),
                     'points' => $this->ptsUser
                 ));
