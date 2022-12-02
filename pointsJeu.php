@@ -80,26 +80,6 @@
 
         public function reponseCorrect($choix){
             if ($choix ==  $_SESSION['scenario']->getReponse()) {
-                // switch ($_SESSION['scenario']->getTheme()){
-                //     case "sexe":
-                //         $this->sexe +=1;
-                //         break;
-                //     case "mst":
-                //         $this->mst += 1;
-                //         break;
-                //     case "faitInsolite":
-                //         $this->faitInsolite += 1;
-                //         break;
-                //     case "vaccin":
-                //         $this->vaccin += 1;
-                //         break;
-                //     case "grossesse":
-                //         $this->grossesse += 1;
-                //         break;
-                //     case "regle":
-                //         $this->regle += 1;
-                //         break;
-                // }
                 return true;
             }
             else{
@@ -107,33 +87,7 @@
             }
         }
 
-        // public function giveBadge(){
-        //     if ($this->sexe == 2){
-        //         $_SESSION['badge']->addBagde("pixil-frame-0_40.png");
-        //         $this->sexe = 0;
-        //     }
-        //     if ($this->mst == 2){
-        //         $_SESSION['badge']->addBagde("pixil-frame-0_32.png");
-        //         $this->mst = 0;
-        //     }
-        //     if ($this->faitInsolite == 2){
-        //         $_SESSION['badge']->addBagde("pixil-frame-0_50.png");
-        //         $this->faitInsolite = 0;
-        //     }
-        //     if ($this->vaccin == 2){
-        //         $_SESSION['badge']->addBagde("pixil-frame-0_42.png");
-        //         $this->vaccin = 0;
-        //     }
-        //     if ($this->grossesse == 2){
-        //         $_SESSION['badge']->addBagde("pixil-frame-0_44.png");
-        //         $this->grossesse = 0;
-        //     }
-        //     if ($this->regle == 2){
-        //         $_SESSION['badge']->addBagde("pixil-frame-0_30.png");
-        //         $this->regle = 0;
-        //     }
-        // }
-
+        
 
 
 

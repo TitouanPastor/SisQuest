@@ -15,10 +15,11 @@
         }
 
         public function printBadges(){
+            echo '<div>';
             foreach($this->listeBadges as $badge){
-                echo ' <img style="width:70px;height:70px;" src="badges/'.$badge.'">';
-                echo $badge;
+                echo '<div> <img style="width:70px;height:70px;" src="badges/'.$badge.'">'.explode('.', $badge)[0].'</div>';
             }
+            echo '</div>';
         }
 
         
