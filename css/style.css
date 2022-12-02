@@ -70,6 +70,19 @@ header {
     background-color: rgb(36, 36, 36);
 }
 
+.photo-groupe {
+    z-index: 100;
+    display: none;
+    position: fixed;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 800px;
+    height: auto;
+}
+
 header #cadeau3 {
     z-index: 1000;
     position: absolute;
