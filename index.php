@@ -25,7 +25,7 @@
     </video>
     <header>
         <ul id="menu">
-            <li><a id="logo" onclick="fantin()" href="#"><img src="img/logo.gif"></a></li>
+            <li><a id="logo" onclick="fantin()" href="#"><img src="img/logo.png"></a></li>
             <img class="cadeau" id="cadeau1" src="img/cadeau.png" alt="Un cadeau">
             <li><a href="#info1">Sujet</a></li>
             <li><a href="#info2">Nuit de l'info</a></li>
@@ -265,7 +265,7 @@
                 if (touche == A) {
                     //KONAMI CODE FAIT !!!!!
                     // A IMPLEMENTER
-                    document.querySelector('.infokonami').innerHTML = "KONAMI CODE FAIT !!!!!";
+                    window.location.href = "pages/clicker.html";
 
                     checkKonami = 0;
                 } else {
@@ -342,14 +342,14 @@
         if (checkPossedeImage) {
             checkPossedeImage = false;
             if (
-                event.clientX <= target.offsetLeft + 42 &&
+                event.clientX <= target.offsetLeft + 100 &&
                 event.clientX >= target.offsetLeft &&
-                event.clientY <= target.offsetTop + 42 &&
+                event.clientY <= target.offsetTop + 100 &&
                 event.clientY >= target.offsetTop && checkPossedeImage == false
             ) {
                 // C GENIAL C SUPER C LE FEU TA GAGNE
                 var spaninfodrag = document.getElementById('dragtarget');
-                spaninfodrag.innerHTML = "C GENIAL C SUPER C LE FEU TA GAGNE";
+                window.location.href = "pages/clicker.html";
             }
         } else {
             checkPossedeImage = true;
