@@ -45,21 +45,19 @@
 
 
             <?php
-            if (!isset($_COOKIE['pseudo'])){
+            if (!isset($_COOKIE['pseudo'])) {
                 echo '<p>Avant de jouer rentrez votre pseudo :</p>
                 <form action="destin-IST.php" method="POST">';
                 echo '<input type="text" name="pseudo" id="pseudo" placeholder="Votre pseudo">';
                 echo '<input type="submit" name="validerPseudo" value="Valider">';
                 echo '</form>';
-                if (isset($_POST['validerPseudo'])){
+                if (isset($_POST['validerPseudo'])) {
                     $pseudo = $_POST['pseudo'];
-                    setcookie('pseudo', $pseudo, time() + 365*24, null, null, false, true);
+                    setcookie('pseudo', $pseudo, time() + 365 * 24, null, null, false, true);
                 }
-            
-            }
-            else{
+            } else {
                 echo '<form id="form" action="destin-IST.php" method="POST">';
-                echo "Connecter en tant que : ".$_COOKIE['pseudo'];
+                echo "Connecter en tant que : " . $_COOKIE['pseudo'];
                 echo '<input type="submit" name="deco" value="Se déconnecter!">';
 
                 if (!isset($_SESSION['scenario'])) {
@@ -74,7 +72,7 @@
                     echo '<input type="submit" name="valider" value="Valider le choix">';
                 } else {
                     if (isset($_POST['valider'])) {
-                        
+
                         if ($_SESSION['points']->reponseCorrect($_POST['choix'])) {
                             echo "Bonne réponse !";
                             $_SESSION['points']->addPoints(1);
@@ -89,8 +87,6 @@
                         echo $_SESSION['points']->AfficherPoints();
                         if ($_SESSION['scenario']->endgame()) {
                             echo '<input type="submit" name="end" value="Terminer!">';
-
-                            
                         } else {
                             echo '<input type="submit" name="next" value="Prochaine question">';
                             if (isset($_POST['next'])) {
@@ -101,16 +97,13 @@
                             }
                         }
                     }
-
-                    
                 }
-                if (isset($_POST['deco'])){
-                    
-                    setcookie('pseudo', '', time()-3600*24, '/', '', false, false);
-                
+                if (isset($_POST['deco'])) {
+
+                    setcookie('pseudo', '', time() - 3600 * 24, '/', '', false, false);
                 }
 
-                if (isset($_POST['next'])) {    
+                if (isset($_POST['next'])) {
                     $_SESSION['scenario']->nextScenario();
                     $_SESSION['scenario']->printScenario();
                     echo '<input type="submit" name="valider" value="Valider le choix">';
