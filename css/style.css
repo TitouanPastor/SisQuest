@@ -1,0 +1,126 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    scroll-behavior: smooth;
+}
+
+main{
+    padding-top: 10vh;
+    width: 100%;
+}
+/*////////////////////////////////*/
+/*//      Header : Menu         //*/
+/*////////////////////////////////*/
+
+header {
+    display: block;
+    position: fixed;
+    width: 100vw;
+    height: 10vh;
+    padding: 1vw;
+    background-color: rgb(26, 26, 26);
+}
+#menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+#menu > li {
+    display: inline-block;
+    padding-right: 10vw;
+}
+#menu > li> a > img {
+    max-height: 6vh;
+}
+
+#menu > li a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.3em;
+}
+
+/*////////////////////////////////*/
+/*//        DIV PRINCIPALE      //*/
+/*////////////////////////////////*/
+
+#jeu{
+    width: 100%;
+    height: 90vh;
+    background-color: rgb(156, 175, 255);
+}
+
+.information-article {
+
+    padding: 5em 0;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80vw;
+    height: 75vh;
+}
+
+.information-article > .contenu {
+    margin-top: auto;
+    display: flex;
+    gap: 15%;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 4em;
+}
+
+.information-article.reverse .contenu {
+    flex-direction: row-reverse;
+}
+.information-article> .contenu > img {
+    width: 20vw;
+}
+/*////////////////////////////////*/
+/*//           FOOTER           //*/
+/*////////////////////////////////*/
+
+footer {
+    width: 100%;
+    height: auto;
+    padding: 1vw;
+    background-color: black;
+    color: white;
+}
+
+.divfooter {
+    display: inline-block;
+    vertical-align: top;
+    height: auto;
+    font-size: 1.4vw;
+}
+.divfooter > ul > li > a > img {
+    vertical-align: top;
+    width: 14vw;
+    margin-left: 5vw;
+}
+.divfooter > ul > li > a{
+    text-decoration: none;
+    color: white;
+}
+#membres{
+    width: 28vw;
+}
+#logos{
+    margin-top: 3vh;
+    width: 66vw;
+}
+#logos > ul > li{
+    display: inline-block;
+}
+.divfooter > ul {
+    list-style-type: none;
+    display: inline-block;
+}
+
+
+
