@@ -10,12 +10,12 @@
 </head>
 
 <body>
-    <video width="500px" height="500px" playsinline autoplay muted controls>
+    <video width="500px" height="500px" playsinline controls>
         <source src="img/fantinvideo.webm" type="video/webm">
     </video>
     <header>
         <ul id="menu">
-            <li><a href="#"><img src="imG/imageTest.jpg"></a></li>
+            <li><a onclick="fantin()" href="#"><img src="imG/imageTest.jpg"></a></li>
             <li><a href="#info1">info1</a></li>
             <li><a href="#info2">info2</a></li>
             <li><a href="#info3">info3</a></li>
@@ -314,17 +314,34 @@
 
     tabCadeaux = [false, false, false, false, false, false, false, false, false, false]
     var nbkdo = 0;
-
     function sessionCadeaux(idDuCadeau) {
 
         var kdo = document.getElementById(idDuCadeau);
-        kdo.setAttribute("src", "img/cadeau-open.png");
-
-        nbkdo++;
+        if (kdo.getAttribute("src") != "img/cadeau-open.png") {
+            nbkdo++;
+            kdo.setAttribute("src", "img/cadeau-open.png");
+        }
 
         if (nbkdo == 10) {
             // implémenter l'action a faire quand le joueur a 10 cadeaux
+            console.log("10 cadeaux");
         }
+    }
+
+    // FANTIN
+    nbClicksFantin = 0;
+    async function fantin() {
+        nbClicksFantin++;
+        if (nbClicksFantin == 13) {
+            nbClicksFantin = 0;
+            // ouvrir video
+            var videofantin = document.getElementsByTagName("video")[0];
+            videofantin.style.display = "block";
+            videofantin.play();
+            await new Promise(r => setTimeout(r, 10000));
+            videofantin.style.display = "none";
+        }
+
     }
 </script>
 
