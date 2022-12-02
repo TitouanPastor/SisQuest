@@ -10,6 +10,7 @@
 </head>
 
 <body>
+    <div id="drag" class="drag"></div>
     <video width="500px" height="500px" playsinline controls>
         <source src="img/fantinvideo.webm" type="video/webm">
     </video>
@@ -34,6 +35,7 @@
         <img class="cadeau" id="cadeau9" src="img/cadeau.png" alt="Un cadeau">
         <img class="cadeau" id="cadeau10" src="img/cadeau.png" alt="Un cadeau">
 
+        <span class="infodragdrop"></span>
         <span class="infokonami"></span>
         <section id="jeu">
         <?php
@@ -117,6 +119,8 @@
 
     ?>
         </section>
+
+        <div id="dragtarget" class="dragtarget"></div>
         <section id="information">
             <article id="info1" class="information-article">
                 <h1>Informations 1</h1>
@@ -309,6 +313,7 @@
 
     tabCadeaux = [false, false, false, false, false, false, false, false, false, false]
     var nbkdo = 0;
+
     function sessionCadeaux(idDuCadeau) {
 
         var kdo = document.getElementById(idDuCadeau);
@@ -336,8 +341,38 @@
             await new Promise(r => setTimeout(r, 10000));
             videofantin.style.display = "none";
         }
-
     }
+
+    // EASTEREGG DRAG DROP
+
+    // ON GET LA DIV DRAGGABLE
+    var drag = document.getElementById("drag");
+    var target = document.getElementById("dragtarget");
+    var checkPossedeImage = false;
+    drag.addEventListener("click", (event) => {
+        console.log(checkPossedeImage)
+        if (checkPossedeImage) {
+            checkPossedeImage = false;
+            if (
+                event.clientX <= target.offsetLeft + 42 &&
+                event.clientX >= target.offsetLeft &&
+                event.clientY <= target.offsetTop + 42 &&
+                event.clientY >= target.offsetTop && checkPossedeImage == false
+            ) {
+                // C GENIAL C SUPER C LE FEU TA GAGNE
+                var spaninfodrag = document.getElementById('dragtarget');
+                spaninfodrag.innerHTML = "C GENIAL C SUPER C LE FEU TA GAGNE";
+            }
+        } else {
+            checkPossedeImage = true;
+            document.addEventListener("mousemove", (event) => {
+                if (checkPossedeImage) {
+                    drag.style.left = event.clientX - 10 + "px";
+                    drag.style.top = event.clientY - 10 + "px";
+                }
+            });
+        }
+    });
 </script>
 
 </html>
