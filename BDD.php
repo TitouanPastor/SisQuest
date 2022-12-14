@@ -3,10 +3,10 @@
         //Connection to BDD
         public function __construct(){
            ///Connexion au serveur MySQL avec PDO
-            $server = '54.37.31.19';
-            $login  = 'u743447366_iutinfo';
-            $mdp    = '0h/GnNOoWZF1';
-            $db     = 'u743447366_nuitinfo';
+            $server = ';
+            $login  = '';
+            $mdp    = '';
+            $db     = '';
 
             try {
                 $this->linkpdo = new PDO("mysql:host=$server;dbname=$db", $login, $mdp);
